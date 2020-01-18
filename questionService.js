@@ -26,7 +26,7 @@ exports.saveCorrectQuestion = (userResults, user, question) => {
 
 exports.check = (userResults, user, question, answer) => {
   if (answer == userResults.lastQuestion.answer) {
-    this.saveCorrectQuestion(userResults, answer, question);
+    this.saveCorrectQuestion(userResults, user, question);
     return true;
   } else {
     return false;
