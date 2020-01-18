@@ -12,7 +12,7 @@ exports.getQuestion = id => {
 
 exports.saveLastQuestion = (userResults, user, question) => {
   userResults.lastQuestion = question;
-  fs.writeFileSync(user + ".json", JSON.stringify(userResults));
+  fs.writeFileSync("user_" + user + ".json", JSON.stringify(userResults));
 };
 
 exports.saveCorrectQuestion = (userResults, user, question) => {
@@ -21,7 +21,7 @@ exports.saveCorrectQuestion = (userResults, user, question) => {
   }
   userResults.correctQuestions.push(question);
   userResults.lastQuestion = null;
-  fs.writeFileSync(user + ".json", JSON.stringify(userResults));
+  fs.writeFileSync("user_" + user + ".json", JSON.stringify(userResults));
 };
 
 exports.check = (userResults, user, question, answer) => {
