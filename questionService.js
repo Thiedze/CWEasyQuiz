@@ -25,7 +25,7 @@ exports.saveCorrectQuestion = (userResults, user, question) => {
 };
 
 exports.check = (userResults, user, question, answer) => {
-  if (answer == userResults.lastQuestion.answer) {
+  if (answer.toLowerCase() == userResults.lastQuestion.answer.toLowerCase()) {
     this.saveCorrectQuestion(userResults, user, question);
     return true;
   } else {
