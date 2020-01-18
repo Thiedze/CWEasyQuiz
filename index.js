@@ -8,8 +8,8 @@ const app = new App({
 });
 
 app.event("app_home_opened", ({ event, say }) => {
-  if (!fs.existsSync(event.user + ".json")) {
-    fs.writeFile(event.user + ".json", "{}", function(err) {
+  if (!fs.existsSync("user_" + event.user + ".json")) {
+    fs.writeFile("user_" + event.user + ".json", "{}", function(err) {
       if (err) throw err;
       console.log("File is created successfully.");
     });
@@ -20,7 +20,7 @@ app.event("app_home_opened", ({ event, say }) => {
 });
 
 app.message(/^[0-9]{2}.[0-9]{2}.[0-9]{4}/, async ({ message, say }) => {
-  fs.readFile(message.user + ".json", (err, data) => {
+  fs.readFile("user_" + message.user + ".json", (err, data) => {
     if (err) throw err;
     var userResults = JSON.parse(data);
 
@@ -40,7 +40,7 @@ app.message(/^[0-9]{2}.[0-9]{2}.[0-9]{4}/, async ({ message, say }) => {
 
 app.message(/[\s\S]*/, async ({ message, say }) => {
   if (!/^[0-9]{2}.[0-9]{2}.[0-9]{4}/.test(message.text)) {
-    fs.readFile(message.user + ".json", (err, data) => {
+    fs.readFile("user_" + message.user + ".json", (err, data) => {
       if (err) throw err;
       var userResults = JSON.parse(data);
 
